@@ -1,11 +1,15 @@
-var path = require('path');
+const path = require('path');
+
+// process.env.BABEL_ENV = TARGET;
 
 const PATHS = {
   src: './src'
-}
+};
+
+
 
 module.exports = {
-  entry: PATHS.src + "/main",
+  entry: PATHS.src + "/index",
   resolve: {
     extensions: ['','.js','.jsx']
   },
@@ -21,11 +25,13 @@ module.exports = {
         include: PATHS.src
       },
       { test: /\.jsx?$/,
-        loader: 'babel',
-        query: {
-          cacheDirectory: true,
-          presets: ['react', 'es2015', 'survivejs-kanban']
-        },
+        loaders: [
+          'babel?cacheDirectory,presets[]=react,presets[]=es2015,presets[]=survivejs-kanban',
+        ],
+        // query: {
+        //   cacheDirectory: true,
+        //   presets: ['es2015']
+        // },
         include: PATHS.src
       }
     ]
