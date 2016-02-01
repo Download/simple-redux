@@ -10,6 +10,6 @@ export const getTodos = () => ({
     promise: fetchTodos()
   },
   meta: {
-    promiseTypeSuffixes: ['PENDING','FULFILLED','REJECTED']
+    promiseTypeSuffixes: ['PENDING', 'FULFILLED', 'REJECTED']
   }
 })
