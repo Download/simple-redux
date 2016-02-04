@@ -2,11 +2,14 @@
 import React, { PropTypes as PT } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as todoActions from '../../shared/actions/todoActions'
 import { Link } from 'react-router'
+import store from '../../shared/stores'
+import TodosApi from '../../shared/state/todos'
 
 const FrontPage = (props) => {
   const { todos, getTodos } = props
+
+  console.log('wahh todos:', todos)
 
   return (
     <div>
@@ -34,14 +37,4 @@ FrontPage.propTypes = {
   })
 }
 
-function mapStateToProps({ todos }) {
-  return {
-    todos
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators(todoActions, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FrontPage)
+export default connect(store.getRootStore().connector)(FrontPage)

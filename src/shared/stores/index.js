@@ -1,6 +1,20 @@
+import link from 'redux-apis'
+import { createStore } from 'redux'
 
-import configureStore from './configureStore'
+let TodosApi = require('../state/todos').default
 
-const rootStore = configureStore()
+let app = new TodosApi()
+const store = createStore(app.reducer)
+link(store, app)
 
-export const getRootStore = () => rootStore
+if (module.hot)
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('../state/todos', () => {
+        TodosApi = require('../state/todos').default
+        app = new TodosApi()
+
+        store.replaceReducer(app.reducer)
+        link(store, app)
+    })
+
+export const getRootStore = () => store
