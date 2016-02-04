@@ -36,5 +36,8 @@ node_modules
 # JSDoc
 out/
 
+# Temp
+_tmp/
+
 # Wiki
 wiki/
