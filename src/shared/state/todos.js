@@ -20,6 +20,7 @@ const TodosApi = remote('http://localhost:8080')(
     }
 
     getTodos() {
+	  console.log('FETCHING');
       this.fetch(`/${API_URL}/todos`)
         .then((r) => this.dispatch(this.createAction('SUCCESS')({ payload: r.json() })))
         .catch((e) => this.dispatch(this.createAction('FAILURE')({ payload: e })))

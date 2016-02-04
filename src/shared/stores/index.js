@@ -1,4 +1,4 @@
-import link from 'redux-apis'
+import { link } from 'redux-apis'
 import { createStore } from 'redux'
 
 let TodosApi = require('../state/todos').default
@@ -6,8 +6,10 @@ let TodosApi = require('../state/todos').default
 console.log('todos:',TodosApi)
 
 let app = new TodosApi()
-const store = createStore(app.reducer)
-link(store, app)
+console.log(app);
+export const store = createStore(app.reducer)
+// expose app via store
+store.app = link(store, app)
 console.log('this does not print :(')
 
 if (module.hot)
@@ -17,7 +19,8 @@ if (module.hot)
     app = new TodosApi()
 
     store.replaceReducer(app.reducer)
-    link(store, app)
+    store.app = link(store, app)
   })
 
-export const getRootStore = () => store
+
+ export default store

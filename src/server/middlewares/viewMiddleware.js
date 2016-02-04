@@ -7,7 +7,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { match, RouterContext } from 'react-router'
 import { Provider } from 'react-redux'
-import { getRootStore } from '../../shared/stores'
+import store from '../../shared/stores'
 import routes from '../../shared/routes'
 import Html from '../../views/html'
 
@@ -31,7 +31,7 @@ export default (app) => {
   }
 
   function renderHtml(nextProps) {
-    const store = getRootStore()
+    //const store = getRootStore()
     const provider = (
       <Provider store={store}>
         <RouterContext {...nextProps}/>
