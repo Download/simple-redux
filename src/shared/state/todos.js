@@ -1,8 +1,9 @@
 import Api from 'redux-apis'
 import remote from 'redux-fetch-api'
+import API_URL from '../constants'
 
 
-remote('http://localhost:8080')(TodosApi)
+@remote('http://localhost:8080')
 export default class TodosApi extends Api {
   static INITIAL_STATE = { error: '', isPending: false, todos: [] };
 
@@ -19,7 +20,7 @@ export default class TodosApi extends Api {
   }
 
   getTodos() {
-    this.fetch(`/${utils.API_URL}/todos`)
+    this.fetch(`/${API_URL}/todos`)
       .then((r) => this.dispatch(this.createAction('SUCCESS')({ payload: r.json() })))
       .catch((e) => this.dispatch(this.createAction('FAILURE')({ payload: e })))
   }
