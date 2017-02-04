@@ -1,6 +1,8 @@
 Sightmap+
 =========
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Download/simple-redux.svg)](https://greenkeeper.io/)
+
 This is the codebase for the frontend system for the Sightmap product.
 
 The project itself is a [ReactJS](https://facebook.github.io/react/) visual
